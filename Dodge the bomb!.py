@@ -1,5 +1,6 @@
 import tkinter
 import random
+import sys, sleep
 
 gameOver = False
 score = 0
@@ -59,10 +60,8 @@ def on_click(event):
     currentText = square.cget("text")
     if gameOver == False:
         if bombfield[row][column] == 1:
-            gameOver = True
             square.config(bg = "red")
-            print("Game Over! You hit a bomb!")
-            print("Your score was:", score)
+            end_game()
 
         elif currentText == "    ":
             square.config(bg = "brown")
@@ -109,6 +108,11 @@ def on_click(event):
                 print("Well done! You found all the safe squares")
                 print("Your score was:", score)
                 
-
+def end_game():
+    gloabal score
+    gameOver = True
+    print("Game Over! You hit a bomb!")
+    print("Your score was:", score)
+    sys.exit()
 
 play_bombdodger()
